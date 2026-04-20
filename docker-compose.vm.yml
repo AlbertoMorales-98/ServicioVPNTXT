@@ -1,0 +1,8 @@
+services:
+  mock-sftp:
+    ports: []
+
+  sender:
+    ports:
+      - "80:8081"
+
