@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: mock-sftp-server
+
+app:
+  sftp:
+    mock-server:
+      port: 2222
+      username: cliente_sftp
+      password: cambio123
+      storage-dir: storage/mock-sftp-root
+      host-key-path: storage/keys/mock-sftp-hostkey.ser

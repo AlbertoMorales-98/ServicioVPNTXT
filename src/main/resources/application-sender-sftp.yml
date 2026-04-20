@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: sftp-sender
+
+app:
+  sftp:
+    sender:
+      outbox-dir: storage/sender-outbox
+      host: 10.10.24.195
+      port: 22
+      username: facturacion.drc
+      password: suriB4atheprutradr
+      remote-dir: /u03/adjuntos/CE/CAJABBVA
