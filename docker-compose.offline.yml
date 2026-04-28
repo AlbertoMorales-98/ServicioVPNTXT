@@ -1,0 +1,38 @@
+services:
+  mock-sftp:
+    image: servicio-vpntxt:local
+    pull_policy: never
+    container_name: servicio-vpntxt-mock-sftp
+    environment:
+      MAIN_CLASS: com.enviotxt.sftp.mockserver.SftpMockServerApplication
+      APP_SFTP_MOCK_SERVER_PORT: 2222
+      APP_SFTP_MOCK_SERVER_USERNAME: cliente_sftp
+      APP_SFTP_MOCK_SERVER_PASSWORD: cambio123
+      APP_SFTP_MOCK_SERVER_STORAGE_DIR: /data/mock-sftp-root
+      APP_SFTP_MOCK_SERVER_HOST_KEY_PATH: /data/keys/mock-sftp-hostkey.ser
+    ports:
+      - "2222:2222"
+    volumes:
+      - ./storage/mock-sftp-root:/data/mock-sftp-root
+      - ./storage/keys:/data/keys
+
+  sftp-sender:
+    image: servicio-vpntxt:local
+    pull_policy: never
+    container_name: servicio-vpntxt-sender
+    depends_on:
+      - mock-sftp
+    environment:
+      MAIN_CLASS: com.enviotxt.sftp.sender.SftpSenderApplication
+      SERVER_PORT: 8081
+      APP_SFTP_SENDER_OUTBOX_DIR: /data/sender-outbox
+      APP_SFTP_SENDER_HOST: mock-sftp
+      APP_SFTP_SENDER_PORT: 2222
+      APP_SFTP_SENDER_USERNAME: cliente_sftp
+      APP_SFTP_SENDER_PASSWORD: cambio123
+      APP_SFTP_SENDER_REMOTE_DIR: /Datos de facturacion TXT
+    ports:
+      - "80:8081"
+    volumes:
+      - ./storage/sender-outbox:/data/sender-outbox
+
