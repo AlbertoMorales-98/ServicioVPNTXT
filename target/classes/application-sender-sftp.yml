@@ -9,7 +9,7 @@ app:
   sftp:
     sender:
       outbox-dir: storage/sender-outbox
-      host: 10.10.24.195
+      host: 10.10.23.171
       port: 22
       username: facturacion.drc
       password: suriB4atheprutradr

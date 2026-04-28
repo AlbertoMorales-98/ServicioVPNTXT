@@ -87,34 +87,6 @@ public record InvoiceRequest(
         );
     }
 
-    public static InvoiceRequest sample() {
-        return new InvoiceRequest(
-                null,
-                "factura-sftp-demo.txt",
-                "1",
-                "MXN",
-                "BPR110323JM5",
-                "GENERAL DE LEY PERSONAS MORALES",
-                "BUSINESS PREY",
-                "jonathan09m@hotmail.com",
-                "ALFONSO REYES",
-                "L003",
-                "216",
-                "06100",
-                "Hipodromo",
-                "",
-                "",
-                "2026-03-25",
-                1,
-                1.00,
-                "Expedicion de Tarjeta de Identificacion Aeroportuaria ABA4C2D720",
-                "04",
-                "PUE",
-                "G03",
-                "20260325192912382800"
-        );
-    }
-
     private static boolean hasText(String value) {
         return value != null && !value.isBlank();
     }

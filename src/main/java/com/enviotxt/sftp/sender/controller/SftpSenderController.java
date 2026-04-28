@@ -4,8 +4,9 @@ import com.enviotxt.sftp.sender.dto.InvoiceRequest;
 import com.enviotxt.sftp.sender.dto.TransferResponse;
 import com.enviotxt.sftp.sender.service.SftpInvoiceTransferService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,20 +17,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/sftp/invoices")
 public class SftpSenderController {
 
+    private static final Logger log = LoggerFactory.getLogger(SftpSenderController.class);
+
     private final SftpInvoiceTransferService transferService;
 
     public SftpSenderController(SftpInvoiceTransferService transferService) {
         this.transferService = transferService;
     }
 
-    @GetMapping("/sample")
-    public InvoiceRequest sample() {
-        return InvoiceRequest.sample();
-    }
-
     @PostMapping("/send")
     @ResponseStatus(HttpStatus.CREATED)
     public TransferResponse send(@Valid @RequestBody InvoiceRequest request) {
+        log.info(
+                "Recibida solicitud de envio SFTP. requestedFileName={}, invoiceLinePresent={}, rfc={}, fechaFactura={}, folioOperacion={}",
+                request.requestedFileName(),
+                request.invoiceLine() != null && !request.invoiceLine().isBlank(),
+                request.rfc(),
+                request.fechaFactura(),
+                request.folioOperacion()
+        );
         return transferService.generateAndSend(request);
     }
 }

@@ -1,7 +1,3 @@
-/home/alberto/Documentos/EnvioTXTArchivoSftp/src/main/java/com/enviotxt/sftp/mockserver/SftpMockServerApplication.java
-/home/alberto/Documentos/EnvioTXTArchivoSftp/src/main/java/com/enviotxt/sftp/mockserver/config/EmbeddedSftpServerConfig.java
-/home/alberto/Documentos/EnvioTXTArchivoSftp/src/main/java/com/enviotxt/sftp/mockserver/config/MockSftpServerProperties.java
-/home/alberto/Documentos/EnvioTXTArchivoSftp/src/main/java/com/enviotxt/sftp/mockserver/server/EmbeddedSftpServer.java
 /home/alberto/Documentos/EnvioTXTArchivoSftp/src/main/java/com/enviotxt/sftp/sender/SftpSenderApplication.java
 /home/alberto/Documentos/EnvioTXTArchivoSftp/src/main/java/com/enviotxt/sftp/sender/config/SftpSenderProperties.java
 /home/alberto/Documentos/EnvioTXTArchivoSftp/src/main/java/com/enviotxt/sftp/sender/controller/SftpSenderController.java
